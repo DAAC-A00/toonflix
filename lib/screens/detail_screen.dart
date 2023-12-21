@@ -2,19 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:toonflix/widgets/thumb_image_widget.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String title, thumb, id;
+  final String title, id;
+  final Image thumbImg;
 
   const DetailScreen(
-      {super.key, required this.title, required this.thumb, required this.id});
+      {super.key,
+      required this.title,
+      required this.thumbImg,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow,
       appBar: AppBar(
-        title: const Text(
-          "Detail Page Screen Sample",
-          style: TextStyle(color: Colors.blue),
+        centerTitle: true, // detail 화면에서 appBar의 title을 중앙 정렬
+        elevation: 2,
+        title: Text(
+          title,
+          style: const TextStyle(color: Colors.blue),
         ),
       ),
       body: Column(
@@ -23,9 +29,9 @@ class DetailScreen extends StatelessWidget {
             height: 30,
           ),
           Container(
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [ThumbImageWidget()],
+              children: [ThumbImageWidget(thumbImg: thumbImg)],
             ),
           ),
         ],

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ThumbImageWidget extends StatelessWidget {
+  final Image thumbImg;
+
   const ThumbImageWidget({
     super.key,
+    required this.thumbImg,
   });
 
   @override
@@ -18,8 +21,7 @@ class ThumbImageWidget extends StatelessWidget {
           color: Colors.red.withOpacity(0.5),
         )
       ]),
-      child: Image.network(
-          "https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F3072371%2Fattach%2F04db9f1b99d5485aba3ab29abd95b154"),
+      child: thumbImg,
     );
   }
 }
