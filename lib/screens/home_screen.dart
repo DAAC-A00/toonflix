@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
+import 'package:toonflix/widgets/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -54,32 +55,7 @@ class HomeScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         print(index);
         var toon = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
-              width: 150,
-              clipBehavior: Clip.hardEdge,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 15,
-                      offset: const Offset(7, 20),
-                      color: Colors.red.withOpacity(0.5),
-                    )
-                  ]),
-              child: Image.network(
-                  "https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F3072371%2Fattach%2F04db9f1b99d5485aba3ab29abd95b154"),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              toon.title,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-            )
-          ],
-        );
+        return Webtoon(title: toon.title, thumb: toon.thumb, id: toon.id);
       },
     );
   }
