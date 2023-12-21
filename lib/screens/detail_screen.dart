@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/widgets/thumb_image_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   final String title, thumb, id;
@@ -9,12 +10,25 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.yellow,
       appBar: AppBar(
         title: const Text(
           "Detail Page Screen Sample",
           style: TextStyle(color: Colors.blue),
         ),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [ThumbImageWidget()],
+            ),
+          ),
+        ],
       ),
     );
   }
