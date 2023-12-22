@@ -29,7 +29,10 @@ class Webtoon extends StatelessWidget {
       },
       child: Column(
         children: [
-          ThumbImageWidget(thumbImg: thumbImg),
+          Hero(
+            tag: id,
+            child: ThumbImageWidget(thumbImg: thumbImg),
+          ),
           const SizedBox(
             height: 20,
           ),

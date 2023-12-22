@@ -30,7 +30,12 @@ class DetailScreen extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [ThumbImageWidget(thumbImg: thumbImg)],
+            children: [
+              Hero(
+                tag: id,
+                child: ThumbImageWidget(thumbImg: thumbImg),
+              )
+            ],
           ),
         ],
       ),
