@@ -28,11 +28,9 @@ class DetailScreen extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [ThumbImageWidget(thumbImg: thumbImg)],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [ThumbImageWidget(thumbImg: thumbImg)],
           ),
         ],
       ),
