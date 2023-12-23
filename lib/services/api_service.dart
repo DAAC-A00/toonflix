@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:toonflix/models/webtoon_detail_model.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 
 class ApiService {
@@ -24,5 +25,15 @@ class ApiService {
     } else {
       throw Error;
     }
+  }
+
+  static Future<List<WebtoonDetailModel>> getDetailFromId(String id) async {
+    final url = Uri.parse("$baseUrl/$id");
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    throw Error;
   }
 }
