@@ -5,5 +5,5 @@ class WebtoonDetailModel {
       : title = json["title"],
         genre = json["genre"],
         about = json["about"],
-        age = json["ago"];
+        age = json["age"];
 }

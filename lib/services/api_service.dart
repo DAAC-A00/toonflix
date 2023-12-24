@@ -32,20 +32,22 @@ class ApiService {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      return jsonDecode(response.body);
+      final detail = jsonDecode(response.body);
+      print(WebtoonDetailModel.fromJson(detail));
+      return WebtoonDetailModel.fromJson(detail);
     }
     throw Error;
   }
 
   static Future<List<WebtoonEpisodeModel>> getEpisodesById(String id) async {
     List<WebtoonEpisodeModel> episodeInstances = [];
-    final url = Uri.parse("$baseUrl/episodes");
+    final url = Uri.parse("$baseUrl/$id/episodes");
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final List<WebtoonEpisodeModel> episodeList = jsonDecode(response.body);
+      final List<dynamic> episodeList = jsonDecode(response.body);
       for (var episode in episodeList) {
-        episodeInstances.add(episode);
+        episodeInstances.add(WebtoonEpisodeModel.fromJson(episode));
       }
       return episodeInstances;
     }

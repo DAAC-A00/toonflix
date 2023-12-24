@@ -19,13 +19,13 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  late Future<WebtoonDetailModel> webtoon;
+  late Future<WebtoonDetailModel> detail;
   late Future<List<WebtoonEpisodeModel>> episodeList;
 
   @override
   void initState() {
     super.initState();
-    webtoon = ApiService.getDetailById(widget.id);
+    detail = ApiService.getDetailById(widget.id);
     episodeList = ApiService.getEpisodesById(widget.id);
   }
 
@@ -55,6 +55,17 @@ class _DetailScreenState extends State<DetailScreen> {
               )
             ],
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          FutureBuilder(
+              future: detail,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(snapshot.data!.about);
+                }
+                return const Text("Loading...");
+              })
         ],
       ),
     );
