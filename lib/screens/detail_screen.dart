@@ -41,50 +41,83 @@ class _DetailScreenState extends State<DetailScreen> {
           style: const TextStyle(color: Colors.blue),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Hero(
-                tag: widget.id,
-                child: ThumbImageWidget(thumbImg: widget.thumbImg),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          FutureBuilder(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Hero(
+                  tag: widget.id,
+                  child: ThumbImageWidget(thumbImg: widget.thumbImg),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            FutureBuilder(
               future: detail,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          snapshot.data!.about,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "${snapshot.data!.genre} / ${snapshot.data!.age}",
-                          style: const TextStyle(fontSize: 14),
-                        )
-                      ],
-                    ),
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        snapshot.data!.about,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "${snapshot.data!.genre} / ${snapshot.data!.age}",
+                        style: const TextStyle(fontSize: 14),
+                      )
+                    ],
                   );
                 }
                 return const Text("Loading...");
-              }),
-        ],
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            FutureBuilder(
+                future: episodeList,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                      children: [
+                        for (var episode in snapshot.data!)
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.green.shade300,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0, vertical: 10),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    episode.title,
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                      ],
+                    );
+                  }
+                  return Container();
+                })
+          ],
+        ),
       ),
     );
   }
