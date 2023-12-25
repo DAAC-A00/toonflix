@@ -32,7 +32,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow,
+      backgroundColor: Colors.yellow.shade100,
       appBar: AppBar(
         centerTitle: true, // detail 화면에서 appBar의 title을 중앙 정렬
         elevation: 2,
@@ -43,12 +43,9 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
           child: Column(
             children: [
-              const SizedBox(
-                height: 30,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -96,17 +93,26 @@ class _DetailScreenState extends State<DetailScreen> {
                         children: [
                           for (var episode in snapshot.data!)
                             Container(
+                              margin: const EdgeInsets.symmetric(vertical: 5),
                               decoration: BoxDecoration(
-                                color: Colors.green.shade300,
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.amber.shade600,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20.0, vertical: 10),
                                 child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       episode.title,
-                                      style: const TextStyle(fontSize: 12),
+                                      style: const TextStyle(
+                                          fontSize: 12, color: Colors.white),
+                                    ),
+                                    const Icon(
+                                      Icons.chevron_right_rounded,
+                                      color: Colors.white,
                                     ),
                                   ],
                                 ),
@@ -115,11 +121,20 @@ class _DetailScreenState extends State<DetailScreen> {
                         ],
                       );
                     }
-                    return Container();
+                    return const Center(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                          ),
+                          CircularProgressIndicator(
+                            color: Colors.green,
+                            backgroundColor: Colors.blue,
+                          ),
+                        ],
+                      ),
+                    );
                   }),
-              const SizedBox(
-                height: 40,
-              ),
             ],
           ),
         ),
