@@ -45,5 +45,15 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- url_launcher start -->
+	<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>https</string>
+  <string>sms</string>
+  <string>tel</string>
+</array>
+<!-- url_launcher end -->
+
 </dict>
 </plist>
