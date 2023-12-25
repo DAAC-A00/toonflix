@@ -7,12 +7,15 @@ class EpisodeWidget extends StatelessWidget {
   const EpisodeWidget({
     super.key,
     required this.episode,
+    required this.widgetId,
   });
 
   final WebtoonEpisodeModel episode;
+  final String widgetId;
 
   onButtonTap() async {
-    await launchUrlString("https://google.com");
+    await launchUrlString(
+        "https://comic.naver.com/webtoon/detail?titleId=$widgetId&no=${episode.id}");
   }
 
   @override

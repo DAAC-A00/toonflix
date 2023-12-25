@@ -15,7 +15,12 @@ class Webtoon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Image thumbImg = Image.network(
-        "https://img1.daumcdn.net/thumb/C428x428/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F3072371%2Fattach%2F04db9f1b99d5485aba3ab29abd95b154");
+      thumb,
+      headers: const {
+        "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+      },
+    );
     return GestureDetector(
       onTap: () {
         Navigator.push(
