@@ -20,6 +20,14 @@ class Webtoon extends StatelessWidget {
         "User-Agent":
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
       },
+      loadingBuilder: (context, child, loadingProgress) =>
+          const CircularProgressIndicator(),
+      errorBuilder: (context, error, stackTrace) {
+        return const Text(
+          '😢',
+          style: TextStyle(fontSize: 70),
+        );
+      },
     );
     return GestureDetector(
       onTap: () {
